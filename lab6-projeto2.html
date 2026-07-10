@@ -1,0 +1,125 @@
+<!--
+	THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/en/editor.html?c=bar-waterfall&code=nVTNbtNAEL73KUZFyCClln_yZyMOaVQQUpCqUnEA9TCxN8mKtdeyN21ClIdBHHgHrnkxZu1dJ40UQDnY4_1m5-ebH8tCcZnDW9hcACiuBIvrTzqwlYrB-Ywlx92v3U8JKUKyWD4iYLLMlgLpXMgSMJfwKvD8PiAEXtB7DVfwDr-znPRjLHPc_Z4iYfdYsFLuftDn7bXToSBb_VJSCsWLNmzJ53NWUmRc8aq-BjCTZYZK1fAm2UKWGYW-cyt5XqsaB-RiXRALp1pgKp-cGtzaaCkq_CJlFsPXWnFkw_OKp8w4B1iNyP-HPGWrGDwLVgpLqkx7JqIx-J4HTaQGPs5FkNvS6WjIaNbPfNeQ0Qg205X3vWLVWLSaNrQFbOwmqGb5oD_nJSe8ycF4C18aVlTfhQa6FphKpXRB9lcSmSvk-QSnTMTUkSWz5asL0raq4ZagYnNZro1xjhmhl6NcVpd7ZCLpGk0aaT7yNBXsQPceqfuh4VAVgqsJz_UcQrWQTzHMUFTMFlY3kJrn6IGj6mg5NDJqZOAZ6RsZGBk6HS265thzHiytuhdHtB5RLO0kGE4Hu8AyuGPCHFAC0aWHxpDL8j9p30lFlYshMszbUvQ9m1dF_hgl9nxWm2ycCZ8xGMtKteNqMp8iTdp-YpJvhN1TMNGioumsdUjX6kLrTtsrQLtd8SZ3uxZGZTrR9qK12EBdtBiuIt8ddIArln1S6_qfQkMlpN7fF2M_GvWvHdjuHR2aDkO3d55prxe64SnT4WB8c3M6atDvu9F5YaPQ7dKanhfWC9zhuWw91z-TbXdAdTqV8r_6M_gL3QNbY6p3zPyZ6LnYvvkD&enc=deflate
+	⚠ Please be aware that this chart is not an official demo of Apache ECharts but is made by user-generated code.
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://echarts.apache.org/en/js/vendors/echarts-gl/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://echarts.apache.org/en/js/vendors/echarts-stat/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-graph-modularity extension
+  <script type="text/javascript" src="https://echarts.apache.org/en/js/vendors/echarts-graph-modularity/dist/echarts-graph-modularity.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+  title: {
+    text: 'Variação da chuva acumulada por ano (2016 a 2025) - Fazenda Carnaúba - Taperoá - PB',
+  },
+  tooltip: {
+    trigger: 'axis',
+    formatter: '{c} mm',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  dataZoom: [
+    {
+      type: 'inside',
+      xAxisIndex: 0,
+      start: 0,
+      end: 100 
+    },
+    {
+      type: 'slider',    
+      yAxisIndex: 0,     
+      left: '10px',      
+      start: 0, 
+      end: 100,
+    }
+  ],
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: {
+    type: 'category',
+    name: "Anos",
+    nameLocation: "Middle",
+    nameGap: 30,
+    splitLine: { show: false },
+    data: ['2016', '2018', '2019', '2020', '2021', '2022', '2023','2024', '2025']
+  },
+  yAxis: {
+    type: 'value',
+    name: "Variação em Relação ao Ano Anterior",
+    nameLocation: "Middle",
+    nameRotate: 90,
+    nameGap: 60
+  },
+  series: [
+    {
+      name: 'Life Cost',
+      type: 'bar',
+      stack: 'Total',
+      label: {
+        show: true,
+        position: 'inside'
+      },
+      data: [
+        { value: -91.7, itemStyle: { color: '#C19A6B' } },
+        { value: -83.5, itemStyle: { color: '#C19A6B' } },
+        { value: 553.3, itemStyle: { color: '#87CEEB' } },
+        { value: -266.9, itemStyle: { color: '#C19A6B' } },
+        { value: 93.4,  itemStyle: { color: '#87CEEB' } },
+        { value: -202.8, itemStyle: { color: '#C19A6B' } },
+        { value: 550.1, itemStyle: { color: '#87CEEB' } },
+        { value: -473,   itemStyle: { color: '#C19A6B' } },
+        { value: -87.4,  itemStyle: { color: '#C19A6B' } }
+      ]
+    }
+  ]
+  
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
